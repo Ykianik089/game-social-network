@@ -1,0 +1,11 @@
+.git/
+.gitignore
+README.md
+*.log
+docker-compose.override.yml
+.env
+.vscode/
+.idea/
+node_modules/
+__pycache__/
+*.pyc

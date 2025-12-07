@@ -1,0 +1,14 @@
+# Папки
+/vendor/
+/images/
+/node_modules/
+
+# Файлы
+*.log
+*.sqlite
+.env
+.DS_Store
+
+# Исключения для images (только пустую папку)
+images/*
+!images/.gitkeep

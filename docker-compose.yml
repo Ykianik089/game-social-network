@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: social-web
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./images:/var/www/html/images
+    environment:
+      - DB_HOST=db
+      - DB_NAME=gamenetwork
+      - DB_USER=root
+      - DB_PASS=rootpassword
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - social-net
+
+  db:
+    image: mysql:8.0
+    container_name: social-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: gamenetwork
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3307:3306"
+    restart: unless-stopped
+    networks:
+      - social-net
+    command: 
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --bind-address=0.0.0.0  # Разрешаем подключения со всех адресов
+      - --skip-name-resolve     # Отключаем DNS lookup для ускорения
+
+volumes:
+  mysql_data:
+
+networks:
+  social-net:
+    driver: bridge
