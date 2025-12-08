@@ -22,7 +22,7 @@
 2. Клонируйте репозиторий:
    ```bash
    git clone https://github.com/Ykianik089/game-social-network.git
-   cd gamenetwork
+   cd game-social-network
 3. Запустите контейнеры:
     docker-compose up -d
 4. Откройте в браузере: http://localhost:8080
