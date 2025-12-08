@@ -21,7 +21,7 @@
 1. Установите Docker и Docker Compose
 2. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш-логин/gamenetwork.git
+   git clone https://github.com/Ykianik089/game-social-network.git
    cd gamenetwork
 3. Запустите контейнеры:
     docker-compose up -d
